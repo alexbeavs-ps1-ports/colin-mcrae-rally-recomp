@@ -1,0 +1,59 @@
+# Autofilled by tools/new_project_layout/probe_disc.py from your legal dump.
+# Review before shipping. Runtime quirks / overlay seeds still need hand work.
+
+[game]
+name = "Colin McRae Rally"
+id = "SCUS-94474"
+players = 1
+exe = "disc/SCUS_944.74"
+disc = "disc/Colin McRae Rally (USA).cue"
+discs = ["disc/Colin McRae Rally (USA).cue"]
+disc_serials = ["SCUS-94474"]
+load_address = "0x80013000"
+entry_pc = "0x800EC4D4"
+text_size = "0x000EE800"
+stack_base = "0x801FFFF0"
+
+# Digests are for data Track 01 (first BINARY FILE / TRACK 01).
+[prepare_disc]
+out_dir = "disc"
+bin_name = "Colin McRae Rally (USA) (Track 1).bin"
+cue_name = "Colin McRae Rally (USA).cue"
+boot_exe = "SCUS_944.74"
+known_sizes = [210515760]
+known_md5 = [
+  "47cb81ebfdf802a092a35c5b653c2de3",
+]
+known_sha1 = [
+  "d4b4100249d7a14940fb9089cd13e05b6c4b98fb",
+]
+known_crc32 = [
+  "8c8588a5",
+]
+
+[recompiler]
+bios_config = "psxrecomp/bios/SCPH1001.toml"
+seeds = "seeds/ghidra_funcs.txt"
+out_dir = "generated"
+strict = true
+
+[runtime]
+openbios = false
+bios_hle = false
+window_title = "Colin McRae Rally Recompiled"
+memcard_dir = "saves"
+overlay_cache = true
+
+[video]
+renderer = "opengl"
+aspect_ratio = "4:3"
+
+[controller]
+default_mode = "digital"
+
+# Online mount gate: digests + track count + optional TOC fingerprint
+# (see docs/NETPLAY.md).
+[netplay]
+require_cue = true
+required_tracks = 4
+required_disc_fp = "2d07c77c7d6de7a77d4d5605dbf1b3e1d167bbf69702d3e6a323cf8b6bc7e467"
